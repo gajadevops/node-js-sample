@@ -23,10 +23,4 @@ node {
 }
 
 
-
-pipeline {
-  agent any
-  stages {
-
-
     
