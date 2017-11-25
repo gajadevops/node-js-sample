@@ -7,7 +7,7 @@ node {
         sh 'cd node-js-sample && pwd'
     
     stage 'Docker image build'
-        sh 'cd node-js-sample'
+        sh 'cd node-js-sample && pwd'
         sh 'docker build -t nodejs-image-new .'
         
     stage 'Docker image tag'
