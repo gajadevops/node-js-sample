@@ -2,6 +2,7 @@ node {
    echo 'Hello World'
    
     stage 'Build'
+        cleanWs()
         sh 'git clone https://github.com/gajadevops/node-js-sample.git'
         sh 'cd node-js-sample && pwd'
     
