@@ -1,5 +1,6 @@
 node {
    echo 'Hello World'
+   cleanWs()
    git 'https://github.com/gajadevops/node-js-sample.git'
    
     stage 'Build'
