@@ -6,7 +6,7 @@ node {
         sh 'cd node-js-sample && pwd'
     
     stage 'Docker image build'
-        sh 'sudo docker build -t nodejs-image-new .'
+        sh 'sudo docker build -t nodejs-image-new node-js-sample/.'
         
     stage 'Docker image tag'
         sh 'echo $(aws ecr get-login --region us-east-2 --registry-ids 410602862282) > file.txt'
