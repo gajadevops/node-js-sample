@@ -1,10 +1,7 @@
 node {
    echo 'Hello World'
-   cleanWs()
-
    
     stage 'Build'
-        sh 'sudo rm -rf node-js-sample'
         sh 'git clone https://github.com/gajadevops/node-js-sample.git'
         sh 'cd node-js-sample && pwd'
     
