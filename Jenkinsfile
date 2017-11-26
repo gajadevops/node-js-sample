@@ -20,9 +20,11 @@ node {
 
     stage 'Kubernetes Deploy'
          sh 'echo Hello'
-        sh 'kubectl create -f node-js-sample/service.yml'
-        sh 'kubectl create -f node-js-sample/deploy.yml'
+        sh 'kubectl replace -f node-js-sample/service.yml --record'
+        sh 'kubectl replace -f node-js-sample/deploy.yml --record'
+        sh 'kubectl rollout status deployment nodejs'
         sh 'kubectl get pods'
+        sh 'kubectl rollout status deployment nodejs'
 }
 
 
