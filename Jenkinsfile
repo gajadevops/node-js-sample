@@ -13,13 +13,16 @@ node {
     stage 'Docker image tag'
         sh 'echo $(aws ecr get-login --region us-east-2 --registry-ids 410602862282) > file.txt'
         sh '$( sed "s/-e none//g" file.txt)'
-        sh 'sudo docker tag nodejs-image-new 410602862282.dkr.ecr.us-east-2.amazonaws.com/demo-poc:nodejs-image-new-${build_image_version}'
+        sh 'sudo docker tag nodejs-image-new 410602862282.dkr.ecr.us-east-2.amazonaws.com/demo-poc:nodejs-image-new-${BUILD_NUMBER}}'
     
     stage 'Docker image push'
-        sh 'sudo docker push 410602862282.dkr.ecr.us-east-2.amazonaws.com/demo-poc:nodejs-image-new-${build_image_version}'
+        sh 'sudo docker push 410602862282.dkr.ecr.us-east-2.amazonaws.com/demo-poc:nodejs-image-new-${BUILD_NUMBER}'
 
     stage 'Kubernetes Deploy'
          sh 'echo Hello'
+        sh 'kubectl create -f service.yml'
+        sh 'kubectl create -f deploy.yml'
+        sh 'kubectl get pods'
 }
 
 
