@@ -4,6 +4,12 @@ metadata:
   name: nodejs
 spec:
   replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
   template:
     metadata:
       labels:
@@ -11,6 +17,6 @@ spec:
     spec:
       containers:
         - name: front-end
-          image: 958306274796.dkr.ecr.us-east-1.amazonaws.com/demo-jenkins-pipeline:nodejs-image-new-v1
+          image: 410602862282.dkr.ecr.us-east-2.amazonaws.com/demo-poc:nodejs-image-new-35
           ports:
             - containerPort: 5000
